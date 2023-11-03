@@ -47,6 +47,10 @@ if(iniciar == "si"){
         alert("Gracias por usar nuestro programa")
         alert("El monto es de" + " " + "$ " + (dolar+=pesos))
     }
+    else if(end_or_not != "si"){
+        alert("Gracias por usar nuestro programa")
+        alert("El monto es de" + " " + "$ " + (dolar+=pesos))
+    }
 }
 else if(iniciar != "si"){
     alert("Gracias por su visita")
