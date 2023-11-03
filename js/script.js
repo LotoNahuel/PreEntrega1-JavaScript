@@ -26,9 +26,9 @@ if(iniciar == "si"){
         }
     }
     tipoMoneda()
-    
-    if(end_or_not == "si"){
-        while(tipoPrecio == "dolar"){
+
+    if(end_or_not === "si"){
+        while(tipoPrecio === "dolar"){
             precio = parseFloat(prompt("Ingrese un precio:"))
             end_or_not = prompt("Quiere ingresar otro precio:")
             tipoMoneda()
@@ -36,7 +36,7 @@ if(iniciar == "si"){
                 break
             }
         }
-        while(tipoPrecio == "peso"){
+        while(tipoPrecio === "peso"){
             precio = parseFloat(prompt("Ingrese un precio:"))
             end_or_not = prompt("Quiere ingresar otro precio:")
             tipoMoneda()
@@ -44,10 +44,6 @@ if(iniciar == "si"){
                 break
             }
         }
-        alert("Gracias por usar nuestro programa")
-        alert("El monto es de" + " " + "$ " + (dolar+=pesos))
-    }
-    else if(end_or_not != "si"){
         alert("Gracias por usar nuestro programa")
         alert("El monto es de" + " " + "$ " + (dolar+=pesos))
     }
