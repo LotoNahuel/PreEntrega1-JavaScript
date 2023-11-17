@@ -2,11 +2,19 @@ console.log("PRIMERA ENTREGA JAVASCRIPT")
 
 alert("Calculadora de compras en DOLARES o PESOS")
 
-let pesos = 0;
-let dolar = 0;
+const precios = [];
 
-let dolarPrecio = 347.5 * 2;
-let pesoPrecio = 2;
+class Precio{
+    constructor(pesos, dolar){
+        this.pesos=pesos;
+        this.dolar=dolar;
+    }
+}
+
+const imp_Moneda ={
+    impDolar: 347.5 * 2,
+    impPeso: 2
+}
 
 let iniciar = prompt("Desea iniciar el programa? (si o no)")
 
@@ -17,15 +25,35 @@ if(iniciar == "si"){
 
     function tipoMoneda(){
         if(tipoPrecio == "dolar"){
-            precioConImpuestos = dolarPrecio * precio;
-            dolar = dolar+=precioConImpuestos;
+            pesos = 0;
+            precioConImpuestos = imp_Moneda.impDolar * precio;
+            const nuevoPrecio = new Precio(pesos,precioConImpuestos);
+            precios.push(nuevoPrecio);
         }
         else if(tipoPrecio == "peso"){
-            precioConImpuestos2 = precio * pesoPrecio;
-            pesos = pesos+=precioConImpuestos2;
+            precioConImpuestos2 = precio * imp_Moneda.impPeso;
+            dolar = 0;
+            const nuevoPrecio = new Precio(precioConImpuestos2,dolar);
+            precios.push(nuevoPrecio);
         }
     }
     tipoMoneda()
+
+    function tipoResult(){
+        if(tipoPrecio === "dolar"){
+            const sumDolar = precios.reduce((accumulator,task)=>{
+                return accumulator + task.dolar
+            },0)
+            alert("El monto es de" + " " + "$ " + (sumDolar))
+        }
+        else if(tipoPrecio === "peso"){
+            const sumPeso = precios.reduce((accumulator,task)=>{
+                return accumulator + task.pesos
+            },0)
+            alert("El monto es de" + " " + "$ " + (sumPeso))
+        }
+    }
+
 
     if(end_or_not === "si"){
         while(tipoPrecio === "dolar"){
@@ -45,11 +73,13 @@ if(iniciar == "si"){
             }
         }
         alert("Gracias por usar nuestro programa")
-        alert("El monto es de" + " " + "$ " + (dolar+=pesos))
+        tipoResult()
+        console.log(precios)
     }
     else if(end_or_not != "si"){
         alert("Gracias por usar nuestro programa")
-        alert("El monto es de" + " " + "$ " + (dolar+=pesos))
+        tipoResult()
+        console.log(precios)
     }
 }
 else if(iniciar != "si"){
